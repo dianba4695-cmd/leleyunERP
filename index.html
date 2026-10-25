@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=archives-v1" />
+  <link rel="stylesheet" href="styles.css?v=archives-v2" />
 </head>
 <body>
   <div class="app-shell">
@@ -69,8 +69,8 @@
   
   <div class="modal-backdrop" id="modal-backdrop"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-head"><div><div class="eyebrow">LELE CLOUD · 新业务</div><h2 id="modal-title">新增凭证</h2></div><button class="modal-close" id="modal-close">×</button></div><div class="modal-body"><div class="form-grid"><label>凭证字<select><option>记</option><option>收</option><option>付</option><option>转</option></select></label><label>凭证日期<input type="date" value="2026-10-24"></label><label class="wide">摘要<input placeholder="请输入业务摘要"></label></div><div class="entry-heading"><b>分录明细</b><span>借贷金额需平衡</span></div><div class="entry-row"><select><option>1001 · 库存现金</option><option>1002 · 银行存款</option></select><input placeholder="摘要" value="日常经营支出"><input placeholder="借方金额" type="number" value="0"><input placeholder="贷方金额" type="number" value="0"></div><div class="entry-row"><select><option>6602 · 管理费用</option><option>6001 · 主营业务收入</option></select><input placeholder="摘要" value="日常经营支出"><input placeholder="借方金额" type="number" value="0"><input placeholder="贷方金额" type="number" value="0"></div><button class="add-entry" id="add-entry">＋ 添加分录</button><div class="modal-total"><span>合计</span><b>借方 ¥ 0.00</b><b>贷方 ¥ 0.00</b></div></div><div class="modal-foot"><button class="button secondary" id="cancel-modal">取消</button><button class="button primary" id="save-voucher">保存凭证</button></div></div></div>
   <script src="app.js?v=full-pages-2"></script>
-  <script src="erp-business.js?v=archives-v1"></script>
-  <script src="erp-pages.js?v=archives-v1"></script>
+  <script src="erp-business.js?v=archives-v2"></script>
+  <script src="erp-pages.js?v=archives-v2"></script>
   <script>
     (() => {
       const shell = document.querySelector('.app-shell');
@@ -163,7 +163,7 @@
         '凭证':'凭证模块入口与账务处理概览；正式页面应能进入新增、查询、审核和归档流程。',
         '新增凭证':'录入一笔完整的复式记账凭证，并在校验通过后保存为待审核凭证。',
         '查看凭证':'按会计期间筛选凭证，查看分录、审核状态及可执行操作。',
-        '会计电子档案':'集中查询凭证及关联附件，支持按凭证追溯会计档案。',
+         '会计电子档案':'集中管理会计电子档案，支持按期间检索、电脑上传、文件夹分类、审核、关联凭证和归档。',
         '收票宝':'接收、整理待入账票据资料，并在核验后转为凭证草稿。',
         '资金':'管理现金、银行账户及资金流水，形成可追溯的账务凭证。',
         '现金日记账':'按现金账户记录收入与支出，并跟踪逐笔余额及凭证关系。',
@@ -252,7 +252,7 @@
           risk:'防止借贷不平、跨期、重复字号、科目禁用、重复点击和误冲销；日志记录制单、审核、修改和冲销人员/时间/原因。附件访问需校验文件类型和大小。',
           external:'凭证录入和本地审核无需第三方授权。电子档案或收票来源若依赖外部服务，只在进入实际取票/同步的最后授权步骤提示服务方与数据范围。',
           acceptance:'测试平衡/不平、空摘要、单边分录、跨期、重复编号、待审核与已审核账簿影响、反审核/红冲关联、结账锁定、保存失败恢复和附件异常。',
-          gap:'当前本地凭证录入支持分录、借贷校验与待审核保存；字号重复检查、细粒度审批、电子档案完整生命周期、附件安全策略、审计不可篡改及跨设备备份仍需完善。',
+           gap:'本地凭证录入与会计电子档案基础生命周期已接入；档案文件保存在当前浏览器本地，云端同步、全文识别、正式审计归档和跨设备备份仍需完善。',
           review:'待确认：凭证字号按月还是按年连续；审核人规则；删除/反审核权限边界（本阶段单用户）；红冲原因必填项；附件格式和保留期限。'
         },
         funds: {
@@ -376,7 +376,7 @@
       const pageOperations = {
         '新增凭证':'操作重点：保存/保存并新增、摘要与科目选择、金额录入、添加分录、打印、附件及放大/全屏。',
         '查看凭证':'操作重点：期间/凭证字/审核状态筛选，新增、导入导出、整理、批量审核、查看分录和凭证回收站。',
-        '会计电子档案':'操作重点：按期间、凭证号、附件类型检索；预览附件；从档案回到源凭证。',
+         '会计电子档案':'操作重点：使用电子档案列表/归档页签；按文件夹和关键词筛选；电脑上传文件；审核通过或退回；关联已有凭证或生成凭证草稿；标记纸质档案、归档、移入可恢复回收区。收票宝上传在授权步骤提示外部服务。文件当前保存在本机浏览器，不提供云同步或全文识别。',
         '收票宝':'操作重点：选择票据来源、预览识别字段、逐项核验、修正后保存为凭证草稿。',
         '内部转账':'操作重点：指定转出/转入账户、日期、金额和摘要；保存后同步生成成对分录草稿。',
         '票据管理':'操作重点：新增票据、维护出票/到期/兑付状态、到期提醒及票据关联凭证。',
