@@ -168,6 +168,27 @@
         localStorage.setItem(compactDraftRevisionKey, '1');
         localStorage.setItem(notesKey, JSON.stringify(notes));
       }
+      const publishCompactRevisionKey = 'lele-notes-compact-content-published-v1';
+      if (localStorage.getItem(publishCompactRevisionKey) !== '1') {
+        const compactDefaults = {'首页':homeSpec, ...Object.fromEntries(Object.keys(pagePurposes).map(key => [key, makePageSpec(key)]))};
+        Object.entries(compactDefaults).forEach(([key, content]) => {
+          const page = notes[key];
+          if (!page || !page.current) {
+            notes[key] = { current: { version: 1, content, savedAt: new Date().toISOString() }, history: [], draft: null };
+            return;
+          }
+          const priorContent = String(page.current.content || '');
+          const oldTitle = key === '首页' ? '乐乐云 · 首页产品说明（评审草案 V0.1）' : `乐乐云 · ${key}页面说明（评审草案）`;
+          const isGeneratedDefault = priorContent.startsWith(oldTitle) || priorContent === content || page.draft === content;
+          if (!isGeneratedDefault) return;
+          if (!Array.isArray(page.history)) page.history = [];
+          if (priorContent && priorContent !== content) page.history.unshift({...page.current});
+          page.current = { version: (Number(page.current.version) || 0) + (priorContent === content ? 0 : 1), content, savedAt: new Date().toISOString() };
+          page.draft = null;
+        });
+        localStorage.setItem(notesKey, JSON.stringify(notes));
+        localStorage.setItem(publishCompactRevisionKey, '1');
+      }
       let pageKey = '';
       const getPage = () => document.getElementById('breadcrumb-current')?.textContent?.trim() || '首页';
       const ensurePage = key => {
