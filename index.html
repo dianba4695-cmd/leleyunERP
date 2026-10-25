@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=assets-v7" />
+  <link rel="stylesheet" href="styles.css?v=assets-v8" />
 </head>
 <body>
   <div class="app-shell">
@@ -68,9 +68,9 @@
   <input id="file-import" type="file" accept=".csv,.xls,.xlsx,.xml" hidden />
   
   <div class="modal-backdrop" id="modal-backdrop"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-head"><div><div class="eyebrow">LELE CLOUD · 新业务</div><h2 id="modal-title">新增凭证</h2></div><button class="modal-close" id="modal-close">×</button></div><div class="modal-body"><div class="form-grid"><label>凭证字<select><option>记</option><option>收</option><option>付</option><option>转</option></select></label><label>凭证日期<input type="date" value="2026-10-24"></label><label class="wide">摘要<input placeholder="请输入业务摘要"></label></div><div class="entry-heading"><b>分录明细</b><span>借贷金额需平衡</span></div><div class="entry-row"><select><option>1001 · 库存现金</option><option>1002 · 银行存款</option></select><input placeholder="摘要" value="日常经营支出"><input placeholder="借方金额" type="number" value="0"><input placeholder="贷方金额" type="number" value="0"></div><div class="entry-row"><select><option>6602 · 管理费用</option><option>6001 · 主营业务收入</option></select><input placeholder="摘要" value="日常经营支出"><input placeholder="借方金额" type="number" value="0"><input placeholder="贷方金额" type="number" value="0"></div><button class="add-entry" id="add-entry">＋ 添加分录</button><div class="modal-total"><span>合计</span><b>借方 ¥ 0.00</b><b>贷方 ¥ 0.00</b></div></div><div class="modal-foot"><button class="button secondary" id="cancel-modal">取消</button><button class="button primary" id="save-voucher">保存凭证</button></div></div></div>
-  <script src="app.js?v=assets-v7"></script>
-  <script src="erp-business.js?v=assets-v7"></script>
-  <script src="erp-pages.js?v=assets-v7"></script>
+  <script src="app.js?v=assets-v8"></script>
+  <script src="erp-business.js?v=assets-v8"></script>
+  <script src="erp-pages.js?v=assets-v8"></script>
   <script>
     (() => {
       const shell = document.querySelector('.app-shell');
@@ -540,6 +540,26 @@
       loadPage();
       const initialPanel = localStorage.getItem(stateKey);
       setOpen(initialPanel === 'notes' || initialPanel === '1' || initialPanel === 'history', initialPanel === 'history' ? 'history' : 'notes');
+    })();
+  </script>
+  <script>
+    (() => {
+      const fitFlyout = entry => {
+        const menu = entry.querySelector(':scope > .subnav');
+        if (!menu) return;
+        requestAnimationFrame(() => {
+          const rect = entry.getBoundingClientRect();
+          const height = Math.min(menu.scrollHeight || 0, window.innerHeight - 16);
+          const top = Math.max(8, Math.min(rect.top, window.innerHeight - height - 8));
+          menu.style.setProperty('--lele-flyout-left', rect.right + 'px');
+          menu.style.setProperty('--lele-flyout-top', top + 'px');
+        });
+      };
+      document.querySelectorAll('.nav-entry').forEach(entry => {
+        entry.addEventListener('mouseenter', () => fitFlyout(entry));
+        entry.addEventListener('focusin', () => fitFlyout(entry));
+      });
+      window.addEventListener('resize', () => document.querySelectorAll('.nav-entry:hover,.nav-entry:focus-within').forEach(fitFlyout));
     })();
   </script>
 </body>
