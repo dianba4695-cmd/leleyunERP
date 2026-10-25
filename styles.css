@@ -194,3 +194,7 @@
 
 .archive-workspace{width:100%;min-width:0;overflow:hidden}.archive-body,.archive-table-panel{min-width:0}.archive-table-wrap{max-width:100%}@media(max-width:1500px){.archive-toolbar-main{flex-wrap:wrap}.archive-search{margin-left:0;flex:1 1 210px}.archive-tree{flex-basis:230px;width:230px}.archive-table{min-width:760px}}@media(max-width:1080px){.archive-tree{flex-basis:200px;width:200px}.archive-table{min-width:720px}}
 
+
+/* Hide redundant submenu chevrons and keep every flyout within the visible window. */
+.nav-entry>.nav-item .nav-caret{display:none!important}
+.nav-entry>.subnav{position:fixed!important;left:var(--lele-flyout-left,190px)!important;top:var(--lele-flyout-top,68px)!important;max-height:calc(100vh - 16px)!important;overflow-y:auto!important;overscroll-behavior:contain!important;z-index:130!important}
