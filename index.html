@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=assets-v9" />
+  <link rel="stylesheet" href="styles.css?v=assets-v10" />
 </head>
 <body>
   <div class="app-shell">
@@ -67,9 +67,9 @@
   <input id="file-import" type="file" accept=".csv,.xls,.xlsx,.xml" hidden />
   
   <div class="modal-backdrop" id="modal-backdrop"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-head"><div><div class="eyebrow">LELE CLOUD · 新业务</div><h2 id="modal-title">新增凭证</h2></div><button class="modal-close" id="modal-close">×</button></div><div class="modal-body"><div class="form-grid"><label>凭证字<select><option>记</option><option>收</option><option>付</option><option>转</option></select></label><label>凭证日期<input type="date" value="2026-10-24"></label><label class="wide">摘要<input placeholder="请输入业务摘要"></label></div><div class="entry-heading"><b>分录明细</b><span>借贷金额需平衡</span></div><div class="entry-row"><select><option>1001 · 库存现金</option><option>1002 · 银行存款</option></select><input placeholder="摘要" value="日常经营支出"><input placeholder="借方金额" type="number" value="0"><input placeholder="贷方金额" type="number" value="0"></div><div class="entry-row"><select><option>6602 · 管理费用</option><option>6001 · 主营业务收入</option></select><input placeholder="摘要" value="日常经营支出"><input placeholder="借方金额" type="number" value="0"><input placeholder="贷方金额" type="number" value="0"></div><button class="add-entry" id="add-entry">＋ 添加分录</button><div class="modal-total"><span>合计</span><b>借方 ¥ 0.00</b><b>贷方 ¥ 0.00</b></div></div><div class="modal-foot"><button class="button secondary" id="cancel-modal">取消</button><button class="button primary" id="save-voucher">保存凭证</button></div></div></div>
-  <script src="app.js?v=assets-v9"></script>
-  <script src="erp-business.js?v=assets-v9"></script>
-  <script src="erp-pages.js?v=assets-v9"></script>
+  <script src="app.js?v=assets-v10"></script>
+  <script src="erp-business.js?v=assets-v10"></script>
+  <script src="erp-pages.js?v=assets-v10"></script>
   <script>
     (() => {
       const shell = document.querySelector('.app-shell');
@@ -96,7 +96,7 @@
         funds: ['资金','现金日记账','银行日记账','内部转账','票据管理','资金报表','核对总账','收支类别','银企互联','账户设置'],
         invoice: ['发票','一键取票','销项发票','进项发票','费用单据','发票资金一览表','发票风险分析','商品明细'],
         payroll: ['工资','工资管理','工资列表','计提工资、发放工资','员工信息','工资统计表','五险一金设置'],
-        assets: ['资产','资产管理','资产列表','资产初始化','变更记录及生成凭证','计提折旧及生成凭证','折旧摊销明细表','资产汇总表','资产类别设置','资产核对总账'],
+        assets: ['资产','资产管理','资产列表','新增资产','修改资产','资产初始化','变更记录及生成凭证','计提折旧及生成凭证','折旧摊销明细表','资产汇总表','资产类别设置','资产核对总账'],
         books: ['账簿','明细账','总账','科目余额表','凭证汇总表','序时账','核算项目明细账','核算项目余额表','核算项目组合表','多栏账','账龄分析表'],
         reports: ['报表','资产负债表','利润表','利润表季报','现金流量表','现金流量表季报','标准现金流量表','部门利润表','项目利润表','数据透视表','费用明细表','所有者权益变动表','纳税统计表','财务概要信息'],
         closing: ['期末结转'],
