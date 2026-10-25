@@ -161,7 +161,7 @@
         Object.entries(compactDefaults).forEach(([key, content]) => {
           const page = notes[key];
           const oldTitle = key === '首页' ? '乐乐云 · 首页产品说明（评审草案 V0.1）' : `乐乐云 · ${key}页面说明（评审草案）`;
-          if (page?.current?.version === 1 && page.history.length === 0 && !page.draft && String(page.current.content || '').startsWith(oldTitle)) {
+          if (page?.current?.version === 1 && Array.isArray(page.history) && page.history.length === 0 && !page.draft && String(page.current.content || '').startsWith(oldTitle)) {
             page.draft = content;
           }
         });
