@@ -198,3 +198,16 @@
 /* Hide redundant submenu chevrons and keep every flyout within the visible window. */
 .nav-entry>.nav-item .nav-caret{display:none!important}
 .nav-entry>.subnav{position:fixed!important;left:var(--lele-flyout-left,190px)!important;top:var(--lele-flyout-top,68px)!important;max-height:calc(100vh - 16px)!important;overflow-y:auto!important;overscroll-behavior:contain!important;z-index:130!important}
+
+/* Keep the complete navigation visible on phone-sized screens. */
+@media(max-width:740px){
+  .sidebar{width:190px!important;padding:15px 12px 12px!important;overflow-y:auto!important}
+  .brand-name,.company-copy,.company-switch>.chevron,.nav-caption,.nav-item:not(.active){display:flex!important}
+  .nav-caption{display:block!important}
+  .nav-item{height:48px!important;justify-content:flex-start!important;padding:0 12px!important;font-size:14px!important}
+  .nav-item.active{font-size:14px!important}
+  .nav-icon{font-size:16px!important}
+  .company-switch{margin:12px 0!important;padding:9px!important}
+  .company-avatar{margin:0!important}
+  .main-area{margin-left:190px!important}
+}
