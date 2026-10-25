@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=assets-v8" />
+  <link rel="stylesheet" href="styles.css?v=assets-v9" />
 </head>
 <body>
   <div class="app-shell">
@@ -43,7 +43,6 @@
           <div class="subnav" data-subnav="settings"><button data-setting="账套">账套</button><button data-setting="科目">科目</button><button data-setting="期初">期初</button><button data-setting="币别">币别</button><button data-setting="凭证字">凭证字</button><button data-setting="辅助核算">辅助核算</button><button data-setting="凭证模板">凭证模板</button><button data-setting="备份恢复">备份恢复</button><button data-setting="操作日志">操作日志</button><button data-setting="关联云发票">关联云发票</button><button data-setting="关联进销存">关联进销存</button><button data-setting="旧账导入">旧账导入</button></div></div>
         </div>
       </nav>
-      <div class="sidebar-bottom"><div class="help-card"><div class="help-icon">✦</div><b>柠檬云功能参考</b><p>登录官方产品查看功能与页面，或前往开放平台了解授权接入。</p><a class="official-link" href="https://www.ningmengyun.com/" target="_blank" rel="noopener noreferrer">打开柠檬云官网 ↗</a><a class="official-link" href="https://open2.ningmengyun.com/" target="_blank" rel="noopener noreferrer">柠檬云开放平台 ↗</a></div><div class="user-profile"><div class="user-avatar">林</div><div><b>林小乐</b><small>财务管理员</small></div><button class="more-btn">···</button></div></div>
     </aside>
     <main class="main-area">
       <header class="topbar"><div class="top-left"><button class="company-select" data-action="company-select">乐乐贸易有限公司 <span>⌄</span></button><button class="period-select" data-action="period-select">2026年10月　ⓘ</button></div><div class="top-actions"><div class="login-status" role="status" aria-label="登录状态"><i></i><span>已登录</span></div></div></header>
@@ -68,9 +67,9 @@
   <input id="file-import" type="file" accept=".csv,.xls,.xlsx,.xml" hidden />
   
   <div class="modal-backdrop" id="modal-backdrop"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-head"><div><div class="eyebrow">LELE CLOUD · 新业务</div><h2 id="modal-title">新增凭证</h2></div><button class="modal-close" id="modal-close">×</button></div><div class="modal-body"><div class="form-grid"><label>凭证字<select><option>记</option><option>收</option><option>付</option><option>转</option></select></label><label>凭证日期<input type="date" value="2026-10-24"></label><label class="wide">摘要<input placeholder="请输入业务摘要"></label></div><div class="entry-heading"><b>分录明细</b><span>借贷金额需平衡</span></div><div class="entry-row"><select><option>1001 · 库存现金</option><option>1002 · 银行存款</option></select><input placeholder="摘要" value="日常经营支出"><input placeholder="借方金额" type="number" value="0"><input placeholder="贷方金额" type="number" value="0"></div><div class="entry-row"><select><option>6602 · 管理费用</option><option>6001 · 主营业务收入</option></select><input placeholder="摘要" value="日常经营支出"><input placeholder="借方金额" type="number" value="0"><input placeholder="贷方金额" type="number" value="0"></div><button class="add-entry" id="add-entry">＋ 添加分录</button><div class="modal-total"><span>合计</span><b>借方 ¥ 0.00</b><b>贷方 ¥ 0.00</b></div></div><div class="modal-foot"><button class="button secondary" id="cancel-modal">取消</button><button class="button primary" id="save-voucher">保存凭证</button></div></div></div>
-  <script src="app.js?v=assets-v8"></script>
-  <script src="erp-business.js?v=assets-v8"></script>
-  <script src="erp-pages.js?v=assets-v8"></script>
+  <script src="app.js?v=assets-v9"></script>
+  <script src="erp-business.js?v=assets-v9"></script>
+  <script src="erp-pages.js?v=assets-v9"></script>
   <script>
     (() => {
       const shell = document.querySelector('.app-shell');
